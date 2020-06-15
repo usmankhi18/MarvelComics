@@ -29,7 +29,19 @@
     <string name="enter_api_server">Enter API Server:</string>
     <string name="configurations">Configurations</string>
     <string name="save_settings">Save Settings</string>
-    <string name="menu_home">Home</string>
+    <string name="menu_dashboard">Dashboard</string>
+    <string name="menu_about">About us</string>
+    <string name="menu_help">Help</string>
+    <string name="menu_contact">Contact Us</string>
+    <string name="menu_changepwd">Change Password</string>
+    <string name="menu_send">Send</string>
+    <string name="menu_series">Series</string>
+    <string name="menu_movies">Movies</string>
+    <string name="menu_characters">Characters</string>
     <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_photos">Photos</string>
+    <string name="menu_channels">Channels</string>
+    <string name="menu_trailers">Trailors</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

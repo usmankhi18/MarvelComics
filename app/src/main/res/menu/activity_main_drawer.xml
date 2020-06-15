@@ -5,16 +5,67 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:id="@+id/nav_dashboard"
+            android:icon="@drawable/dashboard"
+            android:title="@string/menu_dashboard" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_series"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:title="@string/menu_series" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_movies"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="@string/menu_movies" />
+        <item
+            android:id="@+id/nav_characters"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_characters" />
     </group>
+
+    <item android:title="@string/menu_gallery">
+        <menu>
+            <item
+                android:id="@+id/nav_photos"
+                android:icon="@drawable/about"
+                android:title="@string/menu_photos" />
+            <item
+                android:id="@+id/nav_channels"
+                android:icon="@drawable/contact"
+                android:title="@string/menu_channels" />
+            <item
+                android:id="@+id/nav_trailers"
+                android:icon="@drawable/help"
+                android:title="@string/menu_trailers" />
+        </menu>
+    </item>
+
+    <item android:title="@string/menu_help">
+        <menu>
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/about"
+                android:title="@string/menu_about" />
+            <item
+                android:id="@+id/nav_contact"
+                android:icon="@drawable/contact"
+                android:title="@string/menu_contact" />
+            <item
+                android:id="@+id/nav_help"
+                android:icon="@drawable/help"
+                android:title="@string/menu_help" />
+        </menu>
+    </item>
+
+    <item android:title="Account">
+        <menu>
+            <item
+                android:id="@+id/nav_pwd"
+                android:icon="@drawable/pwd"
+                android:title="@string/menu_changepwd" />
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/logout"
+                android:title="@string/logout" />
+        </menu>
+    </item>
 </menu>
