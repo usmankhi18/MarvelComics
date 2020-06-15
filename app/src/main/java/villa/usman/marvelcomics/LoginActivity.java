@@ -43,7 +43,9 @@ public class LoginActivity extends Activity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Login(et_Email.getText().toString());
+                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(intent);
+                //Login(et_Email.getText().toString());
             }
         });
 
