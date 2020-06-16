@@ -40,20 +40,13 @@ public class MainActivity extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(Constants.ProfilePREFERENCES, Context.MODE_PRIVATE);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_dashboard, R.id.nav_series, R.id.nav_movies, R.id.nav_characters,
+                R.id.nav_photos, R.id.nav_channels, R.id.nav_trailers,
                 R.id.nav_about,R.id.nav_contact,R.id.nav_help,R.id.nav_pwd,R.id.logout)
                 .setDrawerLayout(drawer)
                 .build();

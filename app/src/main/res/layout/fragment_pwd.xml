@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F2F2EF"
+    android:background="@color/silver"
     android:orientation="vertical">
 
     <include layout="@layout/layout_header" />
@@ -10,7 +10,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F2F2EF"
         android:fitsSystemWindows="true">
 
         <LinearLayout
@@ -59,8 +58,9 @@
 
             <Button
                 android:id="@+id/btnChangePwd"
-                style="@style/ButtonStyle"
-                android:layout_width="fill_parent"
+                android:background="@drawable/box"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/standard_margin"
                 android:layout_marginTop="@dimen/standard_margin"
