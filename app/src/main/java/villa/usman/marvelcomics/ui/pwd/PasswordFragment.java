@@ -38,7 +38,6 @@ public class PasswordFragment extends Fragment {
         et_Password = root.findViewById(R.id.etPassword);
         et_CurrentPassword = root.findViewById(R.id.etCurrentPassword);
         progressBar = root.findViewById(R.id.progressBar);
-        sharedpreferences = getActivity().getSharedPreferences(Constants.ProfilePREFERENCES, Context.MODE_PRIVATE);
         btnChangePwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +86,7 @@ public class PasswordFragment extends Fragment {
             postcredentials.put("APIUserName", Constants.APIUserName);
             postcredentials.put("APIPassword", Constants.APIPassword);
             postparams.put("APICredentials",postcredentials);
-            postparams.put("MemberID", Integer.valueOf(sharedpreferences.getString("MemberID","0")));
+            postparams.put("UserID", Integer.valueOf(sharedpreferences.getString("UserID","0")));
             postparams.put("CurrentPassword", et_CurrentPassword.getText().toString());
             postparams.put("NewPassword", et_Password.getText().toString());
             Network.getInstance().CallJSONRequestPOSTAPI(url, postparams);
@@ -107,10 +106,6 @@ public class PasswordFragment extends Fragment {
                     if(!responseCode.equalsIgnoreCase(Constants.Error)) {
                         String responseMessage = ResponseListner.getObject().getString("ResponseMessage");
                         if (responseCode.equalsIgnoreCase("00") && responseMessage.equalsIgnoreCase(Constants.Success)) {
-                            LoginResponse.setIsPasswordAutoGen(false);
-                            SharedPreferences.Editor editor = sharedpreferences.edit();
-                            editor.putString("IsPasswordAutoGen", String.valueOf(LoginResponse.getIsPasswordAutoGen()));
-                            editor.commit();
                             Toasty.success(getContext(),"Password Change Successfully!!",Toasty.LENGTH_LONG).show();
                         } else {
                             Toasty.error(getActivity().getApplicationContext(), responseMessage, Toasty.LENGTH_LONG).show();

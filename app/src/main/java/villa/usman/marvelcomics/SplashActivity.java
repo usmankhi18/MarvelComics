@@ -20,12 +20,8 @@ public class SplashActivity extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (sharedPreferences.contains("MemberID") && sharedPreferences.contains("IsPasswordAutoGen")) {
-                    if(!Boolean.getBoolean(sharedPreferences.getString("IsPasswordAutoGen",""))){
+                if (sharedPreferences.contains("UserID")) {
                         goToDashboard();
-                    }else{
-                        goToLoginActivity();
-                    }
                 } else {
                     goToLoginActivity();
                 }

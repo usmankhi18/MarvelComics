@@ -43,9 +43,7 @@ public class LoginActivity extends Activity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                startActivity(intent);
-                //Login(et_Email.getText().toString());
+                Login(et_Email.getText().toString());
             }
         });
 
@@ -62,11 +60,8 @@ public class LoginActivity extends Activity {
     private void Login(String email){
         try{
             if(email.isEmpty()){
-                Toasty.warning(getApplicationContext(),"Please Enter Email",Toasty.LENGTH_LONG).show();
-            }
-            else if (new CommonMethods().isEmail(email) == false) {
-                Toasty.warning(getApplicationContext(),"Enter valid email!",Toasty.LENGTH_LONG).show();
-            }else if(et_Password.getText().toString().isEmpty()){
+                Toasty.warning(getApplicationContext(),"Please Enter LoginID",Toasty.LENGTH_LONG).show();
+            } else if(et_Password.getText().toString().isEmpty()){
                 Toasty.warning(getApplicationContext(),"Please Enter Password",Toasty.LENGTH_LONG).show();
                 return;
             }else{
@@ -84,7 +79,7 @@ public class LoginActivity extends Activity {
     private void CallLoginAPI(){
         try{
             progressBar.setVisibility(View.VISIBLE);
-            String url = Constants.GetMemberLogin;
+            String url = Constants.GetLogin;
             JSONObject postparams = new JSONObject();
             JSONObject postcredentials = new JSONObject();
             postcredentials.put("APIUserName", Constants.APIUserName);
@@ -111,23 +106,39 @@ public class LoginActivity extends Activity {
                         if (responseCode.equalsIgnoreCase("00") && responseMessage.equalsIgnoreCase(Constants.Success)) {
                             JSONObject responseData = ResponseListner.getObject().getJSONObject("ResponseData");
                             JSONObject loginResponse = responseData.getJSONObject("LoginResp");
-                            LoginResponse.setMemberID(loginResponse.getInt("MemberID"));
-                            LoginResponse.setMemberName(loginResponse.getString("MemberName"));
+                            LoginResponse.setUserID(loginResponse.getInt("UserID"));
                             LoginResponse.setUserName(loginResponse.getString("UserName"));
+                            LoginResponse.setFirstName(loginResponse.getString("FirstName"));
+                            LoginResponse.setLastName(loginResponse.getString("LastName"));
+                            LoginResponse.setGender(loginResponse.getString("Gender"));
                             LoginResponse.setEmail(loginResponse.getString("Email"));
                             LoginResponse.setIsActive(loginResponse.getBoolean("IsActive"));
-                            LoginResponse.setIsPasswordAutoGen(loginResponse.getBoolean("IsPasswordAutoGen"));
-                            LoginResponse.setProvinceID(loginResponse.getInt("ProvinceID"));
-                            LoginResponse.setProvinceName(loginResponse.getString("ProvinceName"));
+                            LoginResponse.setMobileNo(loginResponse.getString("MobileNo"));
+                            LoginResponse.setDateOfBirth(loginResponse.getString("DateOfBirth"));
+                            LoginResponse.setCountry(loginResponse.getString("Country"));
+                            LoginResponse.setRoleID(loginResponse.getInt("RoleID"));
+                            LoginResponse.setRole(loginResponse.getString("Role"));
+                            LoginResponse.setStatusID(loginResponse.getInt("StatusID"));
+                            LoginResponse.setStatus(loginResponse.getString("Status"));
+                            LoginResponse.setImageUrl(loginResponse.getString("ImageUrl"));
+                            LoginResponse.setCNIC(loginResponse.getString("CNIC"));
                             SharedPreferences.Editor editor = sharedpreferences.edit();
-                            editor.putString("MemberID", String.valueOf(LoginResponse.getMemberID()));
-                            editor.putString("MemberName", LoginResponse.getMemberName());
+                            editor.putString("UserID", String.valueOf(LoginResponse.getUserID()));
                             editor.putString("UserName", LoginResponse.getUserName());
+                            editor.putString("FirstName", LoginResponse.getFirstName());
+                            editor.putString("LastName", LoginResponse.getLastName());
+                            editor.putString("Gender", LoginResponse.getGender());
                             editor.putString("Email", LoginResponse.getEmail());
-                            editor.putString("IsActive", String.valueOf(LoginResponse.getIsActive()));
-                            editor.putString("IsPasswordAutoGen", String.valueOf(LoginResponse.getIsPasswordAutoGen()));
-                            editor.putString("ProvinceID",String.valueOf(LoginResponse.getProvinceID()));
-                            editor.putString("ProvinceName",LoginResponse.getProvinceName());
+                            editor.putString("IsActive",String.valueOf(LoginResponse.getIsActive()));
+                            editor.putString("MobileNo",LoginResponse.getMobileNo());
+                            editor.putString("DateOfBirth", LoginResponse.getDateOfBirth());
+                            editor.putString("Country", LoginResponse.getCountry());
+                            editor.putString("RoleID", String.valueOf(LoginResponse.getRoleID()));
+                            editor.putString("Role", LoginResponse.getRole());
+                            editor.putString("StatusID", String.valueOf(LoginResponse.getStatusID()));
+                            editor.putString("Status", LoginResponse.getStatus());
+                            editor.putString("ImageUrl",String.valueOf(LoginResponse.getImageUrl()));
+                            editor.putString("CNIC",LoginResponse.getCNIC());
                             editor.commit();
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);
